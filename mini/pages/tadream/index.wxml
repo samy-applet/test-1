@@ -1,4 +1,3 @@
-<van-button type="info">按钮</van-button>
 <view class="tadream">
     <view class="tadream_main" wx:if="{{msgList.length>0}}">
         <view bindtap="router" 

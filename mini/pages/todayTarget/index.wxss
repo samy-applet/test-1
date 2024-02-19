@@ -1,0 +1,23 @@
+/* pages/todayTarget/index.wxss */
+.rate-wrap{
+  padding-bottom: 40rpx;
+}
+.subList-wrap{
+  height: 90rpx;
+  padding: 0 24rpx 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.van-swipe-cell__right{
+  width: 120px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.van-swipe-cell__right .van-button--normal{
+  width: 60px;
+  padding: 0;
+}
