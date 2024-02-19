@@ -75,7 +75,8 @@ Page({
     if (this.data.isSubAdd) {
       list.push({
         id: `${this.data.bakData._id || 0}-${new Date().getTime()}`,
-        content: this.data.content
+        content: this.data.content,
+        isDone: false
       });
     } else {
       list = this.data.subList.map(e => {
@@ -243,6 +244,7 @@ Page({
       this.setData({
         bakData: obj,
       })
+      console.log(111, obj);
       this.setData({
         name: obj.name || "",
         "params.name": obj.name || "",

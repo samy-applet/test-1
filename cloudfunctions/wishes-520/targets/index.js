@@ -90,8 +90,8 @@ exports.update = async (event, context) => {
       data: {
         updateTime: new Date(), // 修改时间
         name: event.name, // 目标名称
-        startDate: new Date(item.startDate), // 目标开始时间
-        endDate: new Date(item.endDate), // 目标结束时间
+        startDate: new Date(event.startDate), // 目标开始时间
+        endDate: new Date(event.endDate), // 目标结束时间
         list: event.list // 目标内容
       },
     })

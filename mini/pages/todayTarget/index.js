@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activeNames: [1],
+    activeNames: [0],
     list: []
   },
   onChange(event) {
@@ -23,8 +23,22 @@ Page({
         data: {}
       }
     })
+    let list = res.data.data.map(e => {
+      let obj = {
+        ...e
+      };
+      let total = e.list.length;
+      let done = 0;
+      e.list.forEach(e2 => {
+        if (e2.isDone) {
+          done += 1;
+        }
+      })
+      obj["rate"] = total ? Number(done / total * 100).toFixed(0) : 0;
+      return obj;
+    })
     that.setData({
-      list: res.data.data
+      list: list
     })
     wx.stopPullDownRefresh()
   },
