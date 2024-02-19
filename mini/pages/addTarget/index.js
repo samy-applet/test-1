@@ -74,7 +74,7 @@ Page({
     let list = [...this.data.subList];
     if (this.data.isSubAdd) {
       list.push({
-        id: `${this.data.bakData._id}-${new Date().getTime()}`,
+        id: `${this.data.bakData._id || 0}-${new Date().getTime()}`,
         content: this.data.content
       });
     } else {
