@@ -4,7 +4,7 @@ App({
   async onLaunch(e) {
     const that = this
     await this.initcloud()
-    if (!wx.getStorageSync('userOpenid') && !wx.getStorageSync('user')) {
+    if (!wx.getStorageSync('userOpenid') || !wx.getStorageSync('user')) {
       const res = await that.call({
         // 云函数名称
         name: 'wishes-520',
@@ -13,16 +13,16 @@ App({
           type: 'userOpenid',
         }
       })
-      console.log(res)
       if (res.success == true) {
         wx.setStorageSync('userOpenid', res.data)
-        that.openidData();
+        // that.openidData();
       }
+      console.log(222, res);
       wx.navigateTo({
         url: '/pages/login/index',
       })
     }
-    that.openidData();
+    // that.openidData();
   },
   async call(obj) {
     try {

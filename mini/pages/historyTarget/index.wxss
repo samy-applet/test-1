@@ -1,4 +1,4 @@
-/* pages/todayTarget/index.wxss */
+/* pages/historyTarget/index.wxss */
 page{
   height: 100%;
   background-color: #E7F1FC;
@@ -7,7 +7,7 @@ page{
   justify-content: center;
   align-items: center;
 }
-.today-target{
+.history-target{
   width: 650rpx;
   height: 800rpx;
   border-radius: 24rpx;

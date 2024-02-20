@@ -1,7 +1,7 @@
 <!--pages/mtydream/index.wxml-->
 <view class="head-wrap">
-  <image src="{{userinfo.avatarUrl}}"></image>
-  <text>{{userinfo.nickName}}</text>
+  <image src="{{userinfo.avatarUrl || '../../image/love.png'}}" bind:tap="toLogin"></image>
+  <text>{{userinfo.nickName || '未授权'}}</text>
 </view>
 <view class="mydream" wx:if="{{msgList.length>0}}">
   <view class="mydream_main">

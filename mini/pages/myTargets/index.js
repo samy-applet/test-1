@@ -46,22 +46,9 @@ Page({
       url: `../addTarget/index?content=true&modifyshow=false&buttonshow=true&data=` + queryBean,
     })
   },
-  async complete(e) {
-    const that = this;
-    await app.call({
-      // 云函数名称
-      name: 'wishes-520',
-      // 传给云函数的参数
-      data: {
-        type: 'finishWish',
-        _id: e.currentTarget.dataset.id
-      }
-    })
-    that.Listdata();
-    wx.showToast({
-      title: '恭喜实现愿望！',
-      icon: 'success',
-      duration: 2000
+  toLogin() {
+    wx.navigateTo({
+      url: '/pages/login/index',
     })
   },
   /**
@@ -75,7 +62,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.setData({
+      userinfo: wx.getStorageSync('user')
+    })
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({

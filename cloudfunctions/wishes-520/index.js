@@ -1,12 +1,14 @@
 const targetsHandler = require('./targets/index');
-const wishesHandler = require('./wishes/index');
-const wishesInviteHandler = require('./wishes-invite/index');
 
 // 云函数入口函数
 exports.main = async (event, context) => {
   switch (event.type) {
+    case 'userOpenid':
+      return await targetsHandler.userOpenid(event, context);
     case 'getTodayTargets':
       return await targetsHandler.getTodayTargets(event, context);
+    case 'getHistoryTargets':
+      return await targetsHandler.getHistoryTargets(event, context);
     case 'getAllTargets':
       return await targetsHandler.getAllTargets(event, context);
     case 'addTargets':
@@ -15,31 +17,5 @@ exports.main = async (event, context) => {
       return await targetsHandler.update(event, context);
     case 'deleteTargets':
       return await targetsHandler.delete(event, context);
-    case 'createWishes':
-      return await wishesHandler.createWishes(event, context);
-    case 'getMyNotFinishWishes':
-      return await wishesHandler.getMyNotFinishWishes(event, context);
-    case 'getParnerNotFinishWishes':
-      return await wishesHandler.getParnerNotFinishWishes(event, context);
-    case 'getMeAndParnerNotFinishWishes':
-      return await wishesHandler.getMeAndParnerNotFinishWishes(event, context);
-    case 'updateWish':
-      return await wishesHandler.updateWish(event, context);
-    case 'finishWish':
-      return await wishesHandler.finishWish(event, context);
-    case 'deleteWish':
-      return await wishesHandler.deleteWish(event, context);
-    case 'addInvite':
-      return await wishesInviteHandler.addInvite(event, context);
-    case 'getMyInvite':
-      return await wishesInviteHandler.getMyInvite(event, context);
-    case 'handleInvite':
-      return await wishesInviteHandler.handleInvite(event, context);
-    case 'setMemorialDay':
-      return await wishesInviteHandler.setMemorialDay(event, context);
-    case 'userOpenid':
-      return await wishesHandler.userOpenid(event, context);
-    case 'updateMyInvite':
-      return await wishesInviteHandler.updateMyInvite(event, context);
   }
 };

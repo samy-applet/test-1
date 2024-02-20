@@ -38,11 +38,11 @@
       </view>
     </view>
   </van-popup>
-  <view class="add_button" bindtap="addItem" wx:if="{{contentshow=='true'&&modifyshow=='true'}}">
-    新增
-  </view>
-  <view wx:if="{{buttonshow=='true'}}" class="btn_modify">
-    <van-button size="small" type="info" bind:tap="editItem">更新</van-button>
-    <van-button size="small" type="danger" bind:tap="openDelModal">删除</van-button>
+  <view class="btn_modify">
+    <van-button size="small" type="info" bindtap="addItem" wx:if="{{contentshow=='true'&&modifyshow=='true'}}">
+      新增
+    </van-button>
+    <van-button size="small" type="info" bind:tap="editItem" wx:if="{{buttonshow=='true'}}">更新</van-button>
+    <van-button size="small" type="danger" bind:tap="openDelModal" wx:if="{{buttonshow=='true'}}">删除</van-button>
   </view>
 </view>

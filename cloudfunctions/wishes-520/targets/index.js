@@ -5,7 +5,22 @@ cloud.init({
 });
 const db = cloud.database();
 const $ = db.command;
-// 获取我今日的目标
+// 获取当前OPENID
+exports.userOpenid = async (event,context) => {
+  try {
+    let { OPENID } = cloud.getWXContext()
+    return {
+      success:true,
+      data:OPENID
+    }
+  }catch{
+    return {
+      success: false,
+      errMsg: e
+    };
+  }
+}
+// 获取我今日目标
 exports.getTodayTargets = async (event, context) => {
   let {
     OPENID,
@@ -16,6 +31,28 @@ exports.getTodayTargets = async (event, context) => {
       creatorOpenId: OPENID,
       startDate: $.lte(currentDate),
       endDate: $.gte(currentDate),
+    }).get() || [];
+    return {
+      success: true,
+      data: list,
+    }
+  } catch (e) {
+    return {
+      success: false,
+      errMsg: e
+    };
+  }
+};
+// 获取我历史目标
+exports.getHistoryTargets = async (event, context) => {
+  let {
+    OPENID,
+  } = cloud.getWXContext() // 这里获取到的 openId 和 appId 是可信的
+  try {
+    let currentDate = new Date();
+    let list = await db.collection('targets').where({
+      creatorOpenId: OPENID,
+      endDate: $.lte(currentDate),
     }).get() || [];
     return {
       success: true,

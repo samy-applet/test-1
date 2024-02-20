@@ -244,7 +244,6 @@ Page({
       this.setData({
         bakData: obj,
       })
-      console.log(111, obj);
       this.setData({
         name: obj.name || "",
         "params.name": obj.name || "",

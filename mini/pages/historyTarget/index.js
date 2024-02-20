@@ -1,4 +1,4 @@
-// pages/todayTarget/index.js
+// pages/historyTarget/index.js
 const app = getApp()
 Page({
 
@@ -19,7 +19,7 @@ Page({
     const res = await app.call({
       name: 'wishes-520',
       data: {
-        type: 'getTodayTargets',
+        type: 'getHistoryTargets',
         data: {}
       }
     })
@@ -41,70 +41,6 @@ Page({
       list: list
     })
     wx.stopPullDownRefresh()
-  },
-  doneItem(e) {
-    let data = e.currentTarget.dataset.item;
-    let subId = e.currentTarget.dataset.subid;
-    data.list = data.list.map(e => {
-      let obj = {
-        ...e
-      };
-      if (e.id == subId) {
-        obj.isDone = true;
-      }
-      return obj;
-    })
-    this.editItem(data);
-  },
-  failItem(e) {
-    let data = e.currentTarget.dataset.item;
-    let subId = e.currentTarget.dataset.subid;
-    data.list = data.list.map(e => {
-      let obj = {
-        ...e
-      };
-      if (e.id == subId) {
-        obj.isDone = false;
-      }
-      return obj;
-    })
-    this.editItem(data);
-  },
-
-  // 修改目标
-  async editItem(item) {
-    let params = {
-      ...item
-    };
-    try {
-      const res = await app.call({
-        name: 'wishes-520',
-        data: {
-          type: 'updateTargets',
-          _id: params._id,
-          name: params.name,
-          startDate: params.startDate,
-          endDate: params.endDate,
-          list: params.list
-        }
-      })
-      if (res.success == true) {
-        wx.showToast({
-          title: '更新成功',
-          icon: 'success',
-          duration: 2000
-        })
-        setTimeout(() => {
-          this.Listdata();
-        }, 500)
-      }
-    } catch (error) {
-      wx.showToast({
-        title: '更新失败，请重试',
-        icon: 'success',
-        duration: 2000
-      })
-    }
   },
 
   /**

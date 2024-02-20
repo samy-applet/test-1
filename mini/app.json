@@ -14,43 +14,39 @@
     "van-popup": "@vant/weapp/popup/index"
   },
   "pages": [
+    "pages/todayTarget/index",
+    "pages/historyTarget/index",
     "pages/myTargets/index",
     "pages/addTarget/index",
-    "pages/tadream/index",
-    "pages/shareappmessage/index",
-    "pages/modification/index",
-    "pages/login/index",
-    "pages/Completed/index",
-    "pages/minedata/index",
-    "pages/todayTarget/index"
+    "pages/login/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "愿望清单",
+    "navigationBarTitleText": "一个小目标",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#1485EE",
-    "selectedColor": "#FF514E",
+    "color": "#cdcdcd",
+    "selectedColor": "#1296db",
     "list": [
       {
         "pagePath": "pages/todayTarget/index",
         "text": "今日小目标",
-        "iconPath": "image/02.png",
-        "selectedIconPath": "image/022.png"
+        "iconPath": "image/tab-1.png",
+        "selectedIconPath": "image/tab-1-actived.png"
       },
       {
         "pagePath": "pages/myTargets/index",
         "text": "我的小目标",
-        "iconPath": "image/06.png",
-        "selectedIconPath": "image/066.png"
+        "iconPath": "image/tab-2.png",
+        "selectedIconPath": "image/tab-2-actived.png"
       },
       {
-        "pagePath": "pages/minedata/index",
+        "pagePath": "pages/historyTarget/index",
         "text": "历史小目标",
-        "iconPath": "image/04.png",
-        "selectedIconPath": "image/044.png"
+        "iconPath": "image/tab-3.png",
+        "selectedIconPath": "image/tab-3-actived.png"
       }
     ]
   },
